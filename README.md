@@ -1,2 +1,2 @@
-# shadow gnome
+# Shadow wizard america gnome gang (SWAGG)
  
