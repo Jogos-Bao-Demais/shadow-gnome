@@ -24,7 +24,7 @@ end
 
 function love.update(dt)
     SWAGG_physics.world:update(dt)
-    if love.keyboard.isDown('q') then
+    if love.keyboard.isDown 'q' then
         love.event.quit()
     end
 

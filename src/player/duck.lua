@@ -57,13 +57,13 @@ function duck:draw()
 end
 
 function duck:move()
-    if love.keyboard.isDown('d') then
+    if love.keyboard.isDown 'd' then
         self.body:applyForce(self.moveSpeed, .0)
-    elseif love.keyboard.isDown('a') then
+    elseif love.keyboard.isDown 'a' then
         self.body:applyForce(-self.moveSpeed, .0)
     end
 
-    if love.keyboard.isDown('w') then
+    if love.keyboard.isDown 'w' then
         self.body:applyLinearImpulse(.0, -self.jumpSpeed)
     end
 end
