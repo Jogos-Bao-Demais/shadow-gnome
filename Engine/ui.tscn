@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://1gjvyg2qj1gd"]
+
+[ext_resource type="Texture2D" uid="uid://ddy4jheffewml" path="res://Assets/Sprites/Afonso/placeholder_pato.png" id="1_c8n5s"]
+[ext_resource type="Texture2D" uid="uid://d0cvepcsqmwcw" path="res://Assets/icon.svg" id="1_rdu48"]
+[ext_resource type="Script" path="res://Scripts/AfonsoBody.gd" id="2_6o4iw"]
+[ext_resource type="Script" path="res://Scripts/ConstraintCamera.gd" id="3_56maf"]
+[ext_resource type="Texture2D" uid="uid://1p15luf8ya0j" path="res://Assets/Sprites/UI/arrow.png" id="4_bueem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bajvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd805"]
+size = Vector2(12, 12)
+
+[node name="RIP_SWAGG" type="Node"]
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(20, 28)
+scale = Vector2(0.6, 0.6)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player"]
+script = ExtResource("2_6o4iw")
+_speed = 100.0
+_friction = 50.0
+_jump_velocity = -200.0
+
+[node name="Icon" type="Sprite2D" parent="Player/CharacterBody2D"]
+scale = Vector2(0.103, 0.1)
+texture = ExtResource("1_c8n5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CharacterBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_bajvs")
+
+[node name="Camera2D" type="Camera2D" parent="Player/CharacterBody2D"]
+scale = Vector2(1.04546, 0.601846)
+position_smoothing_enabled = true
+script = ExtResource("3_56maf")
+_bottom_limit = 45.0
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2(69, 84)
+scale = Vector2(6.03099, -1.29786)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+scale = Vector2(6.80202, 0.826214)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/StaticBody2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_rdu48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+shape = SubResource("RectangleShape2D_hd805")
+
+[node name="MobileControls" type="CanvasLayer" parent="."]
+
+[node name="Left" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(6, 64)
+scale = Vector2(0.46875, 0.46875)
+texture_normal = ExtResource("4_bueem")
+action = "touch_left"
+
+[node name="Right" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(42, 79)
+rotation = 3.14159
+scale = Vector2(0.4375, 0.46875)
+texture_normal = ExtResource("4_bueem")
+action = "touch_right"
+
+[node name="Attack" type="TouchScreenButton" parent="MobileControls"]
+action = "touch_attack"
+
+[node name="Jump" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(153, 64)
+rotation = 1.57079
+scale = Vector2(0.465076, 0.465077)
+texture_normal = ExtResource("4_bueem")
+action = "touch_jump"

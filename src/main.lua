@@ -1,5 +1,6 @@
 -- [] camera
 -- [] map
+-- run mac: sudo open -n -a love /Users/senai-cecoteg/Desktop/Projetos/shadow-gnome/src
 
 local SWAGG_physics = require 'SWAGG.physics'
 local gamera = require 'vendor.gamera'
